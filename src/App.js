@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./App.css";
 import SearchBarContainer from "./Containers/SearchBarContainer";
 import { apiCall, formatCharacters } from "./Services/Helpers";
+import List from "./Components/List"
+
 
 export default class App extends Component {
   async componentDidMount() {
@@ -19,6 +21,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <SearchBarContainer />
+        <List/>
       </div>
     );
   }

@@ -16,9 +16,9 @@ export default class SearchBar extends Component {
     render() {
         const {character} = this.state
         return (
-            <div>
+            <div className="searchBar">
                 <input type="text" onChange={event => this.handleCharacterChange(event)}/>
-                <Button label="Search" onClick={() => this.props.handleSearch(character)}/>
+                <Button className="button" label="Search" onClick={() => this.props.handleSearch(character)}/>
             </div>
         )
     }
