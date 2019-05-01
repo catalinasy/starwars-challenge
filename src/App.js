@@ -47,10 +47,11 @@ export default class App extends Component {
   }
 
   render() {
+    const { loading, error, films } = this.state;
     return (
       <div className="App">
-        <SearchBarContainer />
-        <List/>
+        <SearchBar handleSearch={name => this.handleSearch(name)} />
+        {loading ? <Loading /> : error ? <NotFound /> : <List films={films} />}
       </div>
     );
   }
