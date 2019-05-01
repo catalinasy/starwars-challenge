@@ -1,28 +1,33 @@
-import React, { Component } from 'react'
-import {Button} from "./Button"
+import React, { Component } from "react";
+import { Button } from "./Button";
 
 export default class SearchBar extends Component {
-    constructor() {
-        super()
-        this.state={
-            character:""
-        }
+  state = {
+    character: null
+  };
+  handleCharacterChange(event) {
+    const character = event.target.value.trim();
+    if (character) {
+      this.setState({ character });
     }
-
-    handleCharacterChange(event){
-        this.setState({character: event.target.value})
-    }
-
-    render() {
-        const {character} = this.state
-        return (
-            <div className="searchBar">
-                <input type="text" onChange={event => this.handleCharacterChange(event)}/>
-                <Button className="button" label="Search" onClick={() => this.props.handleSearch(character)}/>
-            </div>
-        )
-    }
+  }
+  handleSearch() {
+    const { character } = this.state;
+    character && this.props.handleSearch(character);
+  }
+  render() {
+    return (
+      <div className="searchBar">
+        <input
+          type="text"
+          onChange={event => this.handleCharacterChange(event)}
+        />
+        <Button
+          className="button"
+          label="Search"
+          onClick={() => this.handleSearch()}
+        />
+      </div>
+    );
+  }
 }
-
-
-

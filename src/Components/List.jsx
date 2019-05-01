@@ -1,15 +1,18 @@
-import React, { PureComponent } from 'react'
+import React from "react";
 
-export default class List extends PureComponent {
-  render() {
-    return (
-      <div className="ListContainer">
-        <ul>
-            <li className="ListItem">First Item</li>
-            <li className="ListItem">Second Item</li>
-            <li className="ListItem">Third Item</li>  
-        </ul>
-      </div>
-    )
-  }
-}
+export const List = props => {
+  const { films } = props;
+  return (
+    <ul>
+      {films &&
+        films.map((film, i) => {
+          return (
+            <article key={i}>
+              <p>Title: {film.title}</p>
+              <p>Directed by: {film.director}</p>
+            </article>
+          );
+        })}
+    </ul>
+  );
+};
