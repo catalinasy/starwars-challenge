@@ -1,11 +1,8 @@
-const baseURL = "http://swapi.co/api/";
-
-export async function apiCall(param) {
-  const data = await fetch(baseURL + param);
+export async function apiCall(URL) {
+  const data = await fetch(URL);
   const json = await data.json();
   return json;
 }
-
 export function formatCharacters(characters) {
   return characters.map((character, index) => {
     return {
