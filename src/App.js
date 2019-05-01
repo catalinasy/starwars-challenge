@@ -22,15 +22,11 @@ export default class App extends Component {
   };
 
   async componentDidMount() {
-    if (localStorage.getItem("starwars-data") === null) {
-      const data = await apiCall("people");
-      const rawCharacters = data.results;
-      const formattedCharacters = formatCharacters(rawCharacters);
-      localStorage.setItem(
-        "starwars-data",
-        JSON.stringify(formattedCharacters)
-      );
+    if (!getLocalStorage("starwars-characters")) {
+      const characters = await getCharactersFromAPI();
+      setLocalStorage("starwars-characters", characters);
     }
+    this.setState({ data: getLocalStorage("starwars-characters") });
   }
   render() {
     return (
