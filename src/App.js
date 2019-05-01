@@ -28,6 +28,24 @@ export default class App extends Component {
     }
     this.setState({ data: getLocalStorage("starwars-characters") });
   }
+  async handleSearch(name) {
+    const { data } = this.state;
+    const character = data.find(c =>
+      c.name.toLowerCase().includes(name.toLowerCase())
+    );
+    if (character) {
+      this.setState({ loading: true });
+      const cachedFilms = verifyCachedFilmsByCharacter(character);
+      const films = cachedFilms || (await getFilmsByCharacter(character));
+
+      // caches films by characterID if they don't exist in localStorage
+      !cachedFilms && setLocalStorage(`starwars-films-${character.id}`, films);
+      this.setState({ films, error: false, loading: false });
+    } else {
+      this.setState({ error: true });
+    }
+  }
+
   render() {
     return (
       <div className="App">
