@@ -1,8 +1,10 @@
 import React from "react";
 
 export const List = props => {
-  const { films } = props;
+  const {films, foundCharacter} = props;
   return (
+    <div className="container"> 
+    <p className="characterName">{foundCharacter}</p>
     <ul>
       {films &&
         films.map((film, i) => {
@@ -14,5 +16,6 @@ export const List = props => {
           );
         })}
     </ul>
+    </div>
   );
 };
