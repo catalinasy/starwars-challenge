@@ -10,7 +10,7 @@ import {
   setLocalStorage,
   getFilmsByCharacter,
   verifyCachedFilmsByCharacter
-} from "./Services/helpers";
+} from "./Services/helpers.js";
 
 
 export default class App extends Component {
@@ -59,3 +59,4 @@ export default class App extends Component {
     );
   }
 }
+

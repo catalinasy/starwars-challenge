@@ -4,7 +4,7 @@ export const List = props => {
   const {films, foundCharacter} = props;
   return (
     <div className="container"> 
-    <p className="characterName">{foundCharacter}</p>
+    <h2 className="characterName">{foundCharacter}</h2>
     <ul>
       {films &&
         films.map((film, i) => {
