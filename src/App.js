@@ -10,7 +10,7 @@ import {
   setLocalStorage,
   getFilmsByCharacter,
   verifyCachedFilmsByCharacter
-} from "./Services/helpers.js";
+} from "./Services/Helpers.js";
 
 
 export default class App extends Component {
